@@ -1,10 +1,24 @@
 import './App.css';
-import Counter from './features/counter/counter';
+import { useState } from "react";
+import Counter from './features/counter/Counter';
+import Coin from './features/coin/Coin';
 
 function App() {
+  const [count, setCount] = useState(0);
+
+  const incrementCount = () => {
+    setCount(count + 1)
+  }
+
+  const decrementCount = () => {
+    setCount(count - 1)
+  }
+
+
   return (
     <div className="App">
-      <Counter />
+      <Counter count={count} incrementCount={incrementCount} decrementCount={decrementCount} />
+      <Coin count={count} />
     </div>
   );
 }

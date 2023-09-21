@@ -1,15 +1,12 @@
-import { useState } from "react";
-
-function Counter() {
-    const [count, setCount] = useState(0);
+function Counter(props) {
 
     return (
         <div>
-            <button className="button" aria-label="Increment value" onClick={() => { setCount(count + 1) }}> + </button>
+            <button className="button" aria-label="Increment value" onClick={props.incrementCount}> + </button>
 
-            <span className="value">Count: {count}</span>
+            <span className="value">Counter Count: {props.count}</span>
 
-            <button className="button" aria-label="Decrement value" onClick={() => { setCount(count - 1) }}> - </button>
+            <button className="button" aria-label="Decrement value" onClick={props.decrementCount}> - </button>
         </div>
     )
 }
