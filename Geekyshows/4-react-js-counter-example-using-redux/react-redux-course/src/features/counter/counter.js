@@ -1,14 +1,19 @@
-function Counter(props) {
+import { useSelector, useDispatch } from "react-redux";
+import { decrement, increment } from './counterSlice';
+
+function Counter() {
+    const count = useSelector((state) => state.counter.count);
+    const dispatch = useDispatch();
 
     return (
         <div>
-            <button className="button" aria-label="Increment value" onClick={props.incrementCount}> + </button>
+            <button className="button" aria-label="Increment value" onClick={() => { dispatch(increment()) }}> + </button>
 
-            <span className="value">Counter Count: {props.count}</span>
+            <span className="value">Count: {count}</span>
 
-            <button className="button" aria-label="Decrement value" onClick={props.decrementCount}> - </button>
+            <button className="button" aria-label="Decrement value" onClick={() => { dispatch(decrement()) }}> - </button>
         </div>
     )
 }
 
-export default Counter;
+export default Counter
