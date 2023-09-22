@@ -1,9 +1,13 @@
-function Coin(props) {
+import { useSelector } from "react-redux";
+
+function Coin() {
+    const coin = useSelector((state) => state.counter.count);
+
     return (
         <div>
-            <span className="value">Coin Count: {props.count}</span>
-        </div >
-    )
+            <span className="value">Coin: {coin}</span>
+        </div>
+    );
 }
 
-export default Coin;
+export default Coin
