@@ -9,11 +9,21 @@ export const postApi = createApi({
         getAllPost: builder.query({
             query: () => ({
                 url: 'posts',
-                method: 'GET'
+                method: 'GET',
             })
+        }),
+        getPostById: builder.query({
+            query: (id) => {
+                console.log("ID: ", id);
+
+                return {
+                    url: `posts/${id}`,
+                    method: 'GET',
+                }
+            },
         })
-    })
+    }),
 });
 
 
-export const { useGetAllPostQuery } = postApi; 
+export const { useGetAllPostQuery, useGetPostByIdQuery } = postApi; 
