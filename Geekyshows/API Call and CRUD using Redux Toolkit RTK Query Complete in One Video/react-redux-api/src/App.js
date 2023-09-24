@@ -1,10 +1,12 @@
 import './App.css';
-import { useGetAllPostQuery, useGetPostByIdQuery, useGetPostByLimitQuery } from './services/post';
+import { useGetAllPostQuery, useGetPostByIdQuery, useGetPostByLimitQuery, useDeletePostMutation } from './services/post';
 
 function App() {
   // const responseInfo = useGetAllPostQuery();
   // const responseInfo = useGetPostByIdQuery(11);
-  const responseInfo = useGetPostByLimitQuery(5);
+  // const responseInfo = useGetPostByLimitQuery(5);
+  const [deletePost, responseInfo] = useDeletePostMutation();
+  console.log(deletePost);
 
   console.log("Response Information: ", responseInfo);
   console.log("Data: ", responseInfo.data);
@@ -36,18 +38,24 @@ function App() {
     //   <p>{responseInfo.data.body}</p>
     // </div >
 
-    // Get Limited Data
+    // // Get Limited Data
+    // <div className="App">
+    //   <h1>Redux Toolkit - RTK Query (Get Limited Data)</h1>
+    //   {
+    //     responseInfo.data.map((post) => (
+    //       <div key={post.id}>
+    //         <h2>{post.id} {post.title}</h2>
+    //         <p>{post.body}</p>
+    //         <hr />
+    //       </div>
+    //     ))
+    //   }
+    // </div>
+
+    // Delete Data
     <div className="App">
-      <h1>Redux Toolkit - RTK Query (Get Limited Data)</h1>
-      {
-        responseInfo.data.map((post) => (
-          <div key={post.id}>
-            <h2>{post.id} {post.title}</h2>
-            <p>{post.body}</p>
-            <hr />
-          </div>
-        ))
-      }
+      <h1>Redux Toolkit - RTK Query (Delete Data)</h1>
+      <button onClick={() => { deletePost(2) }}>Delete Post</button>
     </div>
   );
 }
