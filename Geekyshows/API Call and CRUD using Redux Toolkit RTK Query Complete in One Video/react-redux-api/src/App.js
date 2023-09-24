@@ -1,12 +1,18 @@
 import './App.css';
-import { useGetAllPostQuery, useGetPostByIdQuery, useGetPostByLimitQuery, useDeletePostMutation } from './services/post';
+import { useGetAllPostQuery, useGetPostByIdQuery, useGetPostByLimitQuery, useDeletePostMutation, useCreatePostMutation } from './services/post';
 
 function App() {
   // const responseInfo = useGetAllPostQuery();
   // const responseInfo = useGetPostByIdQuery(11);
   // const responseInfo = useGetPostByLimitQuery(5);
-  const [deletePost, responseInfo] = useDeletePostMutation();
-  console.log(deletePost);
+  // const [deletePost, responseInfo] = useDeletePostMutation();
+  // console.log(deletePost);
+  const [createPost, responseInfo] = useCreatePostMutation();
+  const newPost = {
+    title: "this is new title",
+    body: "this is new body",
+    userId: 1,
+  };
 
   console.log("Response Information: ", responseInfo);
   console.log("Data: ", responseInfo.data);
@@ -52,10 +58,16 @@ function App() {
     //   }
     // </div>
 
-    // Delete Data
+    // // Delete Data
+    // <div className="App">
+    //   <h1>Redux Toolkit - RTK Query ( Delete Data)</h1>
+    //   <button onClick={() => { deletePost(2) }}>Delete Post</button>
+    // </div>
+
+    // Create Data
     <div className="App">
-      <h1>Redux Toolkit - RTK Query (Delete Data)</h1>
-      <button onClick={() => { deletePost(2) }}>Delete Post</button>
+      <h1>Redux Toolkit - RTK Query ( Create Data)</h1>
+      <button onClick={() => { createPost(newPost) }}>Add Post</button>
     </div>
   );
 }
